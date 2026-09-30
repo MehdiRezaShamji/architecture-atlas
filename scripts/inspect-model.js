@@ -7,7 +7,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Target model path: /public/models/pagoda.glb
-const defaultModelPath = path.resolve(__dirname, 'public', 'models', 'pagoda.glb');
+const defaultModelPath = path.resolve(__dirname, '..', 'public', 'models', 'pagoda.glb');
 const modelPath = process.argv[2] ? path.resolve(process.argv[2]) : defaultModelPath;
 
 if (!fs.existsSync(modelPath)) {
@@ -101,7 +101,7 @@ async function inspectModel() {
   });
 
   console.log('================================================================================');
-  console.log(`GLTF MODEL INSPECTION: ${path.relative(__dirname, modelPath).replace(/\\/g, '/')}`);
+  console.log(`GLTF MODEL INSPECTION: ${path.relative(path.resolve(__dirname, '..'), modelPath).replace(/\\/g, '/')}`);
   console.log('Sorted by minimum Y ascending (bottom-to-top: base first, spire last)');
   console.log('================================================================================\n');
 
