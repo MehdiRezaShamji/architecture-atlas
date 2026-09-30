@@ -41,6 +41,8 @@ architecture-atlas/
 ├── api/
 │   ├── explain.ts              # Serverless Groq handler for part-level architectural explanations
 │   └── guide.ts                # Serverless Groq handler for the tool-calling AI tour guide
+├── docs/
+│   └── screenshots/            # Application interface previews
 ├── public/
 │   └── models/
 │       └── pagoda.glb          # Segmented 3D building asset
@@ -183,15 +185,13 @@ The application is deployed on **Vercel**:
 
 ## Screenshots
 
-<!-- TODO: Add screenshots to /docs/screenshots/ and update filenames as needed -->
-
-![Architecture Atlas - Assembled View](/docs/screenshots/assembled-view.png)
+![Architecture Atlas - Assembled View](docs/screenshots/assembled-view.png)
 *Fig 1. Default assembled view of the Japanese pagoda study model.*
 
-![Architecture Atlas - Exploded Decomposition](/docs/screenshots/exploded-view.png)
+![Architecture Atlas - Exploded Decomposition](docs/screenshots/exploded-view.png)
 *Fig 2. Exploded view showing separated vertical tiers and roof structures.*
 
-![Architecture Atlas - AI Guide Tool Interaction](/docs/screenshots/ai-guide.png)
+![Architecture Atlas - AI Guide Tool Interaction](docs/screenshots/ai-guide.png)
 *Fig 3. Conversational AI Guide highlighting and explaining architectural components.*
 
 ---
