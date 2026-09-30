@@ -193,3 +193,9 @@ The application is deployed on **Vercel**:
 
 ![Architecture Atlas - AI Guide Tool Interaction](/docs/screenshots/ai-guide.png)
 *Fig 3. Conversational AI Guide highlighting and explaining architectural components.*
+
+---
+
+## License
+
+This project's source code is licensed under the [MIT License](LICENSE). The 3D pagoda model is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) by QuennyTR (see [Model Credit & Licensing](#model-credit--licensing)).
