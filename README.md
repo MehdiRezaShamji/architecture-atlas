@@ -16,9 +16,9 @@ Live Demo: https://architecture-atlas-opal.vercel.app
 
 - **Interactive 3D Assembly**: Orbit, pan, and zoom controls built on Three.js and `@react-three/fiber` with custom pointer and touch-gesture disambiguation (handling desktop mouse navigation, shift-pan, and mobile two-finger pinch-zoom).
 - **Click and Tap Inspection**: Select any discrete mesh component via 3D raycasting or dropdown search to reveal its architectural nomenclature, category, and functional description.
-- **Exploded View Decomposition**: Continuous slider dynamically interpolates component positions radially and vertically from their computed bounding box centers to illustrate interlocking joinery and interior chambers.
+- **Exploded View Decomposition**: Continuous slider separates components strictly along the vertical axis (model-local Y, oriented by model rotation). Spacing is calculated from geometry bounding-box vertical centers: parts are sorted bottom-to-top, grouped into rank indices (parts sharing centers within 0.01 receive the same rank), and offset from the median rank by `(rank - middleRank) * 0.22`, scaled linearly by the slider value (0 to 1).
 - **Part Isolation**: Isolate individual components or specific assemblies against a neutral background, dimming or hiding surrounding structural geometry.
-- **Real-Time Search**: Filter parts by common name, transliterated terminology (e.g., *kidan*, *sorin*), or functional category with direct selection focus.
+- **Real-Time Search**: Search input filters parts in real time by display name with direct camera selection focus; transliterated Japanese terminology (e.g., *kidan*, *sōrin*, *engawa*, *kōran*) and functional categories from `pagoda.json` are displayed in the dropdown menu and the side Info Panel.
 - **Per-Part AI Explanation**: Serverless endpoint querying Groq to generate grounded, 2–4 paragraph contextual architectural explanations for selected parts.
 - **Conversational 3D AI Guide**: Multi-turn chat assistant that controls the 3D canvas via function/tool calling (highlighting parts, isolating assemblies, adjusting explode percentage, or resetting the scene) while explaining design concepts.
 
@@ -30,7 +30,7 @@ The core design principle of Architecture Atlas is a data-driven rendering pipel
 
 ### Key Decisions
 
-1. **Add Data, Not Code**: All building geometry, initial camera orientations, mesh mappings, component hierarchies, and architectural glossaries reside in `src/data/buildings/<building-id>.json`.
+1. **Add Data, Not Code**: Adding a new building requires placing a segmented 3D model (`.glb`) in `public/models/` and defining its structural metadata in `src/data/buildings/<building-id>.json` (specifying part mesh names, display names, categories, descriptions, camera azimuth, model rotation, and accent color). The generic `BuildingViewer` handles rendering, raycasting, and animations without modifying any rendering or scene logic.
 2. **Fixed Neutral UI with Per-Building Accent**: The UI maintains a clean architectural neutral chrome (`#FAFAF9` canvas, `#FFFFFF` panels, `#232320` typography) accented by a single configurable `accentColor` (e.g., `#7A2E2E` vermilion lacquer for the pagoda) derived from the building metadata.
 3. **Responsive Viewport Handling**: UI elements use dynamic viewport units (`dvh` with `vh` fallback) and CSS `env(safe-area-inset-*)` rules to ensure that panels and controls remain accessible across desktop and mobile devices without obscuring the 3D model.
 
@@ -44,6 +44,9 @@ architecture-atlas/
 ├── public/
 │   └── models/
 │       └── pagoda.glb          # Segmented 3D building asset
+├── scripts/
+│   ├── generate_pagoda.js      # Procedural geometry generation script
+│   └── inspect-model.js        # GLTF mesh analysis and anomaly detection utility
 ├── src/
 │   ├── components/
 │   │   ├── GuideChat.tsx       # AI Guide drawer, tool execution loop, Markdown message renderer
@@ -84,7 +87,7 @@ The "Ask AI Guide" feature integrates an interactive conversational assistant di
    - If the model returns tool calls, the frontend executes the scene transformations immediately, appends tool execution result messages to the conversation state, and calls `/api/guide` again.
    - The loop continues until the model produces a final user-facing text response or reaches a hard safety cap of **5 tool-call rounds per turn**.
 4. **Model Configuration**:
-   - Powered by Groq's high-throughput chat completions API (`openai/gpt-oss-120b` in codebase, compatible with `llama-3.3-70b-versatile`).
+   - Both `/api/guide` and `/api/explain` query Groq's API specifying `openai/gpt-oss-120b`.
 
 ---
 
@@ -94,7 +97,7 @@ The "Ask AI Guide" feature integrates an interactive conversational assistant di
 - **3D Graphics**: Three.js, `@react-three/fiber`, `@react-three/drei`
 - **Markdown Rendering**: `react-markdown`
 - **Serverless API**: Vercel Serverless Functions (`/api`)
-- **LLM Inference**: Groq Cloud API
+- **LLM Inference**: Groq Cloud API (`openai/gpt-oss-120b`)
 
 ---
 
