@@ -47,7 +47,6 @@ architecture-atlas/
 │   └── models/
 │       └── pagoda.glb          # Segmented 3D building asset
 ├── scripts/
-│   ├── generate_pagoda.js      # Procedural geometry generation script
 │   └── inspect-model.js        # GLTF mesh analysis and anomaly detection utility
 ├── src/
 │   ├── components/
