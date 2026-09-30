@@ -133,12 +133,15 @@ GROQ_API_KEY=your_groq_api_key_here
 ### Development Server
 
 1. **Client-Only Mode** (3D Viewer and UI without AI endpoints):
+
    ```bash
    npm run dev
    ```
 
 2. **Full Stack with Serverless Functions** (Recommended):
+
    Because the AI Guide and part explanation features run as Vercel serverless functions in `/api`, use the Vercel CLI to execute both the Vite client and the Node.js API handlers locally:
+
    ```bash
    # Install Vercel CLI globally if not already installed
    npm install -g vercel
