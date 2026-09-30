@@ -1,0 +1,88 @@
+{
+  "id": "pagoda-prototype-01",
+  "name": "Japanese Pagoda (study model)",
+  "sourceNote": "Free CC-Attribution hobbyist asset from Sketchfab, not a documented real landmark. Descriptions below reflect general, real Japanese pagoda architecture (terminology and function), not invented history specific to this asset.",
+  "modelPath": "/models/pagoda.glb",
+  "modelRotation": [
+    3.14159,
+    0,
+    0
+  ],
+  "defaultCameraAzimuth": 337,
+  "accentColor": "#7A2E2E",
+  "parts": [
+    {
+      "meshName": "Base",
+      "displayName": "Base / Platform",
+      "romanizedTerm": "kidan",
+      "category": "foundation",
+      "description": "The raised stone or earthen platform the pagoda stands on. It lifts the wooden structure off damp ground, distributes the building's weight, and visually anchors the tower before it steps up into its stacked roof tiers."
+    },
+    {
+      "meshName": "Stairs",
+      "displayName": "Entrance Stairs",
+      "category": "access",
+      "description": "Steps providing access up onto the base platform. In traditional pagodas these are typically centered on one or more sides of the square base, matching the building's symmetrical footprint."
+    },
+    {
+      "meshName": "Ground_floor_room",
+      "displayName": "Ground-Floor Room",
+      "category": "room",
+      "description": "The enclosed interior room of the ground story. Japanese pagodas are generally not meant to be climbed story-to-story; interior space is often minimal and sometimes historically housed a central support pillar core and, in some pagodas, an altar or relics.",
+      "note": "Mesh renamed from 'Ground_floor_room' during segmentation for clearer level-numbering; original Blender name kept in mind for reference."
+    },
+    {
+      "meshName": "Ground_floor_engawa",
+      "displayName": "Ground-Floor Veranda",
+      "romanizedTerm": "engawa",
+      "category": "veranda",
+      "description": "A narrow decked walkway of finished wood running along the outside of the room, beneath the eaves. It forms a veranda-like transitional space between the enclosed interior and the outdoors, and traditionally could be enclosed with sliding storm shutters."
+    },
+    {
+      "meshName": "Railings",
+      "displayName": "Balcony Railing",
+      "romanizedTerm": "kōran",
+      "category": "railing",
+      "description": "A balustrade lining the outer edge of the veranda/balcony. Functionally it prevents falls off the open walkway; decoratively it's one of the more ornamented horizontal elements on the exterior.",
+      "note": "This mesh covers the ground-floor railing only. The first-floor level still has its railing merged into First_floor_room (tracked in TODO, not yet split out) — do not describe this mesh as covering the whole building's railings."
+    },
+    {
+      "meshName": "First_floor_room",
+      "displayName": "Second-Story Room",
+      "category": "room",
+      "description": "The enclosed interior room of the second story, stacked above the ground floor as the pagoda steps upward and narrows slightly with each tier."
+    },
+    {
+      "meshName": "First_floor_roof",
+      "displayName": "First Roof Tier",
+      "category": "roof",
+      "description": "The first of the pagoda's stacked, projecting roof tiers. Each tier extends well beyond the walls beneath it and curves slightly upward at the corners, both to shed rain away from the wooden structure and to create the tower's characteristic rhythm of overlapping eaves."
+    },
+    {
+      "meshName": "Golden_trim_band",
+      "displayName": "Eave Trim Band",
+      "category": "trim",
+      "description": "A decorative fascia band running along an eave edge, distinct from a full roof tier. Fascia trim like this typically finishes and protects the exposed edge of a roof structure while adding a visual accent, often the most ornamented single line on an otherwise wood-toned exterior.",
+      "note": "Confirmed via close-up screenshot review that this is trim, not a fourth roof tier — worth remembering since the name alone could be misread as structural."
+    },
+    {
+      "meshName": "Second_floor_roof",
+      "displayName": "Second Roof Tier",
+      "category": "roof",
+      "description": "The second stacked roof tier, following the same projecting, upward-curving eave pattern as the tier below it."
+    },
+    {
+      "meshName": "Third_floor_room",
+      "displayName": "Top Story / Balcony",
+      "category": "room",
+      "description": "The small uppermost story or balcony. Top tiers of pagodas are often the least functional space in the building — sometimes little more than an enclosed shell beneath the final roof and spire, since the tower as a whole is generally not designed for people to occupy each level."
+    },
+    {
+      "meshName": "Top_roof_and_spire",
+      "displayName": "Top Roof & Spire",
+      "romanizedTerm": "sōrin",
+      "category": "spire",
+      "description": "The final roof tier together with the metal spire (finial) rising from its peak. The spire is a distinct architectural lineage traceable back through Chinese pagodas to the finial of the Indian stupa, and is traditionally read as a visual and symbolic connector between the earthbound structure and the sky above it."
+    }
+  ]
+}
